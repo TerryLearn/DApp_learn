@@ -1,10 +1,10 @@
 
-import { Mainnet, WagmiWeb3ConfigProvider,MetaMask,Sepolia } from '@ant-design/web3-wagmi';
+import { Mainnet, WagmiWeb3ConfigProvider,MetaMask,Sepolia,WalletConnect } from '@ant-design/web3-wagmi';
 import { http,useReadContract,useWriteContract,createConfig } from "wagmi";
 import { Address,NFTCard,Connector,ConnectButton,useAccount } from '@ant-design/web3';
 import {parseEther} from 'viem';
 import { mainnet,sepolia } from 'viem/chains';
-import { injected } from "wagmi/connectors";
+import { injected,walletConnect } from "wagmi/connectors";
 import { Button, message } from "antd";
 
 
@@ -17,6 +17,10 @@ const config = createConfig({
   connectors: [
     injected({
       target: "metaMask",
+    }),
+    walletConnect({
+      projectId: "9b90560c5e4ef574b635e22f4ce81706",
+      showQrModal: true,
     }),
   ],
 });
@@ -85,7 +89,7 @@ export default function Web3() {
             config={config}
             chains={[Sepolia]} 
             transports={{[Mainnet.id]: http('https://api.zan.top/node/v1/eth/sepolia/fe682edfa4e44534b33b93a0483ecd53')}}
-            wallets={[MetaMask()]}
+            wallets={[MetaMask(),WalletConnect()]}
             eip6963={{
             autoAddInjectedWallets: true,
             }}
