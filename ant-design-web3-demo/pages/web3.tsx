@@ -86,6 +86,9 @@ export default function Web3() {
             chains={[Sepolia]} 
             transports={{[Mainnet.id]: http('https://api.zan.top/node/v1/eth/sepolia/fe682edfa4e44534b33b93a0483ecd53')}}
             wallets={[MetaMask()]}
+            eip6963={{
+            autoAddInjectedWallets: true,
+            }}
             >
             <Address format address="0x83b50abf491b150bc91b4a4436a9af0c1c8c24a5" />
             <NFTCard
