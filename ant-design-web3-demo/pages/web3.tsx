@@ -7,7 +7,7 @@ export default function Web3() {
     return(
         <WagmiWeb3ConfigProvider
             chains={[Mainnet]} 
-            transports={{[Mainnet.id]: http()}}
+            transports={{[Mainnet.id]: http('https://api.zan.top/node/v1/eth/sepolia/fe682edfa4e44534b33b93a0483ecd53')}}
             wallets={[MetaMask()]}
             >
             <Address format address="0xEcd0D12E21805803f70de03B72B1C162dB0898d9" />
